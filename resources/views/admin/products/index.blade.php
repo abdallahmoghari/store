@@ -12,7 +12,7 @@
             <th scope="col">الصنف</th>
             <th scope="col">السعر</th>
             <th scope="col">الكمية</th>
-            <th scope="col">الإجراءات</th>
+            <th scope="col">added by</th>
           </tr>
         </thead>
         <tbody>
@@ -23,6 +23,7 @@
             <td>{{ $product->category->name }}</td>
             <td>{{ $product->price }}</td>
             <td>{{ $product->quantity }}</td>
+            <td>{{ $product->user->name ?? 'Unknown' }}</td>
             <td>
                 <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-info">تعديل</a>
                 <form action="{{ route('admin.products.delete', $product->id) }}" method="POST" class="d-inline">

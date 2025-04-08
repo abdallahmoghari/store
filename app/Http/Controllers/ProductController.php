@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
+
 
 class ProductController extends Controller
 {
@@ -29,9 +31,15 @@ class ProductController extends Controller
             'category_id' => 'required|exists:categories,id',
         ]);
 
+
+        $validatedData['user_id'] = Auth::id();
+
+
         Product::create($validatedData);
+
         return redirect()->route('admin.products.index')->with('success', 'تم إضافة المنتج بنجاح');
     }
+
 
     public function edit($id)
     {

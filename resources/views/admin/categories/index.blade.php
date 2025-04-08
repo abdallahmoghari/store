@@ -9,7 +9,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">اسم الصنف</th>
-                <th scope="col">الوصف</th>
+                <th scope="col">added by</th>
             </tr>
         </thead>
         <tbody>
@@ -17,6 +17,7 @@
             <tr>
                 <th scope="row">{{ $category->id }}</th>
                 <td>{{ $category->name }}</td>
+                <td>{{ $category->user->name ?? 'unknown' }}</td>
                 <td>
                     <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-info">تعديل</a>
                     <form action="{{ route('admin.categories.delete', $category->id) }}" method="POST" class="d-inline">
